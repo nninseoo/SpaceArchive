@@ -1,0 +1,440 @@
+/* 전체 테마 및 달력 css */
+/* 폰트 
+Orbitron(로고·제목), Space Mono(본문·코드), Syncopate(대형 타이틀)
+*/
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0b0b0b; 
+  color: #f1f1f1;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* =========================================
+   1번째 화면 (Main Section) 스타일
+========================================= */
+
+.main-section {
+  position: relative;
+  height: 100vh; /* 모니터 크기에 관계없이 항상 화면을 꽉 채움 */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.5rem 3.5rem; /* 기획서 여백 비율에 맞춤 */
+  
+  /* 배경 이미지 */
+  background-image: url('/IMG_0738.JPG'); 
+  background-size: cover;
+  background-position: center;
+  overflow: hidden; /* 글자가 화면 밖으로 튀어나가는 것 방지 */
+}
+
+/* --- 상단 헤더 --- */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.logo-small {
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  color: #fff;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+}
+
+.main-nav li {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  color: #ddd;
+  display: flex;
+  align-items: center;
+  gap: 6px; /* 점과 글자 사이 간격 */
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.main-nav li:hover {
+  color: #fff;
+}
+
+.dot {
+  font-size: 0.8rem;
+}
+
+/* --- 메인 타이틀 --- */
+.main-title-container {
+  position: absolute;
+  top: 10%; /* 화면 상단 쪽에 붙음 */
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
+}
+
+.giant-title {
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 700;
+  font-size: 14vw; /* 화면 넓이에 따라 글씨가 거대해짐 */
+  letter-spacing: -2px;
+  margin: 0;
+  line-height: 0.8;
+  
+  /* 금속/실버 그라데이션 효과 */
+  background: linear-gradient(180deg, #ffffff 0%, #aaaaaa 40%, #222222 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* 글자 테두리를 주어 입체감 부여 */
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3); 
+}
+
+.giant-subtitle {
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 400;
+  font-size: 5vw;
+  letter-spacing: 1.5vw;
+  margin: 0;
+  margin-top: -3vw; /* 위쪽 ORVION 글자와 살짝 겹치게 위로 끌어올림 */
+  margin-left: 35vw; /* 우측으로 치우치게 배치 */
+  
+  background: linear-gradient(180deg, #ffffff 0%, #555555 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- 하단 설명 & 버튼 --- */
+.main-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 10;
+  margin-bottom: 2rem;
+}
+
+.mission-text h3 {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.mission-text p {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  color: #888; 
+  line-height: 1.5;
+}
+
+/* --- 버튼 --- */
+.advice-btn {
+  background: rgba(10, 10, 10, 0.8);
+  color: #ddd;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 18px 45px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.advice-btn:hover {
+  border-color: rgba(255, 255, 255, 0.8);
+  color: #fff;
+}
+
+/* CSS 가상 요소를 이용해 버튼 모서리에 하얀 점(Crosshair) 만들기 */
+.advice-btn::before,
+.advice-btn::after {
+  content: '';  /* 가상 요소 필수 속성 */
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background-color: #fff;
+}
+
+/* 왼쪽 위 모서리 점 */
+.advice-btn::before {
+  top: -2px;
+  left: -2px;
+}
+
+/* 오른쪽 아래 모서리 점 */
+.advice-btn::after {
+  bottom: -2px;
+  right: -2px;
+}
+
+/* =========================================
+   2번째 화면 (Calendar Section) 스타일
+========================================= */
+/* 화면 레이아웃 (Grid 적용) */
+.content-section {
+  min-height: 100vh;
+  padding: 5rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* 달력 1 : 데이터 2 비율 */
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* 달력 */
+.react-calendar {
+  width: 100%;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+.react-calendar__navigation button {
+  color: white;
+}
+.react-calendar__tile {
+  color: #ccc;
+}
+.react-calendar__tile:disabled {
+  background-color: #0b0b0b;
+  color: #444;
+}
+.react-calendar__tile--active {
+  background: white !important;
+  color: black !important;
+  font-weight: bold;
+}
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background: #333;
+}
+
+/* disabled 가상 클래스
+   버튼이나 입력창이 비활성화(사용 불가) 상태일 때 적용되는 스타일 */
+.react-calendar__navigation button:disabled {
+  background-color: transparent !important; /* 하얀색 배경을 투명하게 만듦 */
+  color: #333 !important; /* 화살표 아이콘을 아주 어두운 회색으로 만들어 비활성화된 느낌을 줌 */
+  cursor: default; /* 마우스를 올려도 클릭(손가락) 모양으로 바뀌지 않게 함 */
+}
+
+/* 오늘 날짜 타일의 배경색과 글자색 바꾸기 */
+.react-calendar__tile--now {
+  background-color: #2a2a2a !important; /* 짙은 회색 배경 */
+  color: #ffffff !important; /* 하얀 글씨 */
+  font-weight: bold !important;
+  border: 1px solid #555 !important; /* 회색 테두리 */
+}
+
+
+/* 오늘 날짜에 마우스를 올렸을 때(Hover) 스타일 */
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background-color: #333 !important;
+}
+
+/* 데이터 디스플레이 영역 */
+.apod-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* 제목 및 구분선 */
+.apod-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #333; /* 구분선 */
+  padding-bottom: 10px;
+}
+
+/* 번역 버튼 영역 */
+.apod-actions {
+  display: flex;
+  justify-content: flex-end; /* 버튼을 우측 하단으로 정렬하여 배치 */
+  margin-top: 10px;
+}
+
+/* 번역 스위치 버튼  */
+.translate-toggle {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #555;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  margin: 0; 
+}
+
+.translate-toggle:hover {
+  background-color: #f1f1f1;
+  color: #0b0b0b;
+}
+
+.translate-toggle:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.explanation {
+  line-height: 1.8;
+  color: #ccc;
+  text-align: justify;
+}
+.apod-visual img, .apod-visual iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  filter: grayscale(80%);
+}
+
+/* 로딩중 */
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  grid-column: 2 / 3;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #333;
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 반응형 모바일 (화면 작아지면 위아래로 배치) */
+@media (max-width: 768px) {
+  .content-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 번역 로딩 중 텍스트 */
+.translating-text {
+  color: #888;
+  font-style: italic;
+  display: inline-block;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+/* =========================================
+   푸터 (Footer) 영역 스타일
+========================================= */
+
+.site-footer {
+  background-color: #0b0b0b; 
+  border-top: 1px solid #222; /* 위쪽 콘텐츠와 구분되는 얇은 선 */
+  padding: 3rem 4rem 1rem 4rem;
+  font-family: 'Space Mono', monospace;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* 상단(로고/메뉴)과 하단(약관) 사이 간격 */
+}
+
+/* 중첩 Flexbox (Nested Flexbox) */
+/* 큰 틀을 space-between으로 양끝/중앙 배치 */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* 로고 폰트 */
+.footer-logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* 중앙 메뉴: 2개의 ul 태그를 나란히 배치 */
+.footer-links {
+  display: flex;
+  gap: 5rem; /* ABOUT US 열과 CAREER 열 사이의 간격 */
+}
+
+.footer-links ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem; /* 위아래 글자 간격 */
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+.footer-links li {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer-links li:hover {
+  color: #fff;
+}
+
+
+/* 푸터 하단 (개인정보처리방침 / 쿠키) */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between; /* 양 끝으로 밀어내기 */
+  font-size: 0.7rem;
+  color: #666;
+  padding-top: 1rem;
+  border-top: 1px solid #222; /* 살짝 구분을 위한 선 */
+}
+
+.privacy, .cookie {
+  cursor: pointer;
+}
+.privacy:hover, .cookie:hover {
+  color: #aaa;
+}
+
+/* 모바일 반응형 (화면이 작아지면 세로로 배치) */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .footer-links {
+    gap: 3rem;
+  }
+}
